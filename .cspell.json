@@ -1,0 +1,27 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": ["**/.git/**"],
+  "words": [
+    "Blocklist",
+    "Cryptojacking",
+    "DNSSEC",
+    "FTLCONF",
+    "HEALTHCHECK",
+    "NOERROR",
+    "PIHOLE",
+    "SERVFAIL",
+    "ZIZMOR",
+    "Zi's",
+    "adlists",
+    "cooldown",
+    "dnssec",
+    "healthcheck",
+    "klutchell",
+    "multiarch",
+    "pihole",
+    "pipefail",
+    "privacylevel",
+    "zizmor"
+  ]
+}
