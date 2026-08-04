@@ -1,0 +1,21 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": ["**/.git/**"],
+  "words": [
+    "DNSSEC",
+    "FTLCONF",
+    "HEALTHCHECK",
+    "NOERROR",
+    "PIHOLE",
+    "SERVFAIL",
+    "ZIZMOR",
+    "cooldown",
+    "dnssec",
+    "healthcheck",
+    "klutchell",
+    "pihole",
+    "pipefail",
+    "zizmor"
+  ]
+}
