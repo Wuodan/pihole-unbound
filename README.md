@@ -25,11 +25,14 @@ docker compose up -d
 docker compose ps
 ```
 
-Open `http://<host-address>/admin/` and configure your router to advertise the
-host address as its DNS server. Configure its IPv6 DNS setting too, if used.
+To use Pi-hole network-wide, configure your router's DHCP settings to advertise
+the Docker host's address as the DNS server. If the router advertises DNS over
+IPv6, configure it to advertise the Docker host's IPv6 address as well.
 
-Do not add a public secondary DNS server unless you want clients to bypass
-Pi-hole when they choose it.
+Do not configure a public secondary DNS server. Clients may use it instead of
+Pi-hole and bypass filtering.
+
+The Pi-hole admin interface is available at `http://<docker-host>/admin/`.
 
 ## Verify
 
