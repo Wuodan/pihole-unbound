@@ -9,6 +9,7 @@ DNSSEC-validating resolver.
 - Docker with Docker Compose
 - Ports 53/tcp, 53/udp, 80/tcp, and 443/tcp available
 - A stable LAN address for the host
+- The private subnet `172.31.0.0/24` available for the Docker network
 
 ## Setup
 
@@ -36,6 +37,8 @@ The Pi-hole admin interface is available at `http://<docker-host>/admin/`.
 
 ## Verify
 
+On the Docker host:
+
 ```bash
 dig @127.0.0.1 pi-hole.net
 dig @127.0.0.1 dnssec.works
@@ -44,6 +47,15 @@ dig @127.0.0.1 dnssec-failed.org
 
 The first two queries should return `NOERROR`; `dnssec-failed.org` should return
 `SERVFAIL`.
+
+From another LAN client:
+
+```bash
+dig @<docker-host> pi-hole.net
+```
+
+Then make a normal DNS query and confirm it appears in Pi-hole's Query Log. This
+verifies that the client is using the DNS server advertised by the router.
 
 View logs:
 
@@ -56,6 +68,7 @@ docker compose logs --tail=100 pihole unbound
 ```bash
 docker compose pull
 docker compose up -d
+docker image prune -f
 ```
 
 ### Automatic updates
