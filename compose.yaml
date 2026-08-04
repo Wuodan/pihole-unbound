@@ -1,19 +1,24 @@
 services:
   unbound:
-    build:
-      context: ./unbound
+    image: klutchell/unbound:latest
     container_name: unbound
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "drill-hc", "@127.0.0.1", "dnssec.works"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      start_period: 30s
     networks:
-      dns:
-        ipv4_address: 172.31.0.2
+      - dns
 
   pihole:
     image: pihole/pihole:latest
     container_name: pihole
     restart: unless-stopped
     depends_on:
-      - unbound
+      unbound:
+        condition: service_healthy
     ports:
       - "53:53/tcp"
       - "53:53/udp"
@@ -23,20 +28,15 @@ services:
       TZ: Europe/Zurich
       FTLCONF_webserver_api_password: ${PIHOLE_PASSWORD:?Set PIHOLE_PASSWORD in .env}
       FTLCONF_dns_listeningMode: ALL
-      FTLCONF_dns_upstreams: unbound#5335
+      FTLCONF_dns_upstreams: unbound
       FTLCONF_dns_dnssec: "false"
     volumes:
       - ./etc-pihole:/etc/pihole
     cap_add:
       - SYS_NICE
     networks:
-      dns:
-        ipv4_address: 172.31.0.3
+      - dns
 
 networks:
   dns:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 172.31.0.0/24
-

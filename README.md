@@ -35,17 +35,10 @@ PIHOLE_PASSWORD='replace-with-a-long-random-password'
 
 Single quotes keep characters such as `$` literal. `.env` is ignored by Git.
 
-Review `compose.yaml` before starting:
-
-- Change `TZ` to your timezone.
-- Make sure `172.31.0.0/24` does not overlap another local, Docker, or VPN
-  network. If it does, change the subnet in both `compose.yaml` and
-  `unbound/unbound.conf`.
-
-Start the stack:
+Change `TZ` in `compose.yaml` to your timezone, then start the stack:
 
 ```bash
-docker compose up -d --build
+docker compose up -d
 docker compose ps
 ```
 
@@ -84,12 +77,13 @@ docker compose exec unbound unbound-checkconf /etc/unbound/unbound.conf
 
 Pi-hole uses the following environment-controlled settings from `compose.yaml`:
 
-- `FTLCONF_dns_upstreams: unbound#5335`
+- `FTLCONF_dns_upstreams: unbound`
 - `FTLCONF_dns_listeningMode: ALL`, required for the Docker bridge network
 - `FTLCONF_dns_dnssec: "false"`, because Unbound performs DNSSEC validation
 
-Unbound listens only on port 5335 of the private Compose network. Pi-hole is the
-only service that publishes DNS ports on the host.
+Unbound uses the [`klutchell/unbound`](https://hub.docker.com/r/klutchell/unbound)
+image and is reachable only on the private Compose network. Pi-hole is the only
+service that publishes DNS ports on the host.
 
 Pi-hole data is stored in `./etc-pihole/`. The directory is created at startup
 and ignored by Git.
@@ -97,19 +91,20 @@ and ignored by Git.
 ## Update
 
 ```bash
-docker compose pull pihole
-docker compose build --pull unbound
+docker compose pull
 docker compose up -d
 ```
 
-The setup tracks `pihole/pihole:latest`. Replace `latest` in `compose.yaml` with
-a [date-based image tag](https://github.com/pi-hole/docker-pi-hole/releases) if
-you prefer explicit version updates.
+The setup tracks the `latest` tag of both images. Replace the Pi-hole tag with a
+[date-based image tag](https://github.com/pi-hole/docker-pi-hole/releases) and
+the Unbound tag with one from [Docker Hub](https://hub.docker.com/r/klutchell/unbound/tags)
+if you prefer explicit version updates.
 
 ## References
 
 - [Pi-hole Docker documentation](https://docs.pi-hole.net/docker/)
 - [Pi-hole Unbound guide](https://docs.pi-hole.net/guides/dns/unbound/)
+- [`klutchell/unbound` source](https://github.com/klutchell/unbound-docker)
 - [Unbound documentation](https://unbound.docs.nlnetlabs.nl/en/latest/)
 
 ## License
