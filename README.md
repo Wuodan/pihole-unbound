@@ -55,6 +55,20 @@ docker compose pull
 docker compose up -d
 ```
 
+### Automatic updates
+
+Install the included weekly systemd timer:
+
+```bash
+sudo cp systemd/pihole-unbound-update@.{service,timer} /etc/systemd/system/
+sudo systemctl daemon-reload
+unit=$(systemd-escape --path "$PWD")
+sudo systemctl enable --now "pihole-unbound-update@${unit}.timer"
+```
+
+The timer pulls both images, recreates changed containers, and waits for their
+health checks.
+
 ## Documentation
 
 - [Pi-hole Docker](https://docs.pi-hole.net/docker/)

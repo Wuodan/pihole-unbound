@@ -1,0 +1,11 @@
+[Unit]
+Description=Update Pi-hole and Unbound containers
+Requires=docker.service
+After=docker.service network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%f
+ExecStart=/usr/bin/docker compose pull --quiet
+ExecStart=/usr/bin/docker compose up -d --wait --wait-timeout 180
+
