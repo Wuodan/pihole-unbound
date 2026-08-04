@@ -1,2 +1,5 @@
 .env
 etc-pihole/
+
+# megalinter adds this when using checkov
+/.megalinter_github_conf/
