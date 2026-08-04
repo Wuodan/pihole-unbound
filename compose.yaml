@@ -10,7 +10,8 @@ services:
       retries: 3
       start_period: 30s
     networks:
-      - dns
+      dns:
+        ipv4_address: 172.31.0.2
 
   pihole:
     image: pihole/pihole:latest
@@ -32,11 +33,17 @@ services:
       FTLCONF_dns_dnssec: "false"
     volumes:
       - ./etc-pihole:/etc/pihole
+    dns:
+      - 172.31.0.2
     cap_add:
       - SYS_NICE
     networks:
-      - dns
+      dns:
+        ipv4_address: 172.31.0.3
 
 networks:
   dns:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.0.0/24
