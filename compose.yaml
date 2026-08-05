@@ -30,6 +30,8 @@ services:
       FTLCONF_dns_listeningMode: ALL
       FTLCONF_dns_upstreams: unbound
       FTLCONF_dns_dnssec: "false"
+      FTLCONF_dns_queryLogging: "false"
+      FTLCONF_misc_privacylevel: 3
     volumes:
       - ./etc-pihole:/etc/pihole
     dns:
