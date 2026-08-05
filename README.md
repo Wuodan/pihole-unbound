@@ -19,7 +19,7 @@ cd pihole-unbound
 cp .env.example .env
 ```
 
-Set `PIHOLE_PASSWORD` in `.env` and adjust `TZ` in `compose.yaml`, then run:
+Set `PIHOLE_PASSWORD` in `.env`, then run:
 
 ```bash
 docker compose up -d

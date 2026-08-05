@@ -26,7 +26,6 @@ services:
       - "80:80/tcp"
       - "443:443/tcp"
     environment:
-      TZ: Europe/Zurich
       FTLCONF_webserver_api_password: ${PIHOLE_PASSWORD:?Set PIHOLE_PASSWORD in .env}
       FTLCONF_dns_listeningMode: ALL
       FTLCONF_dns_upstreams: unbound
