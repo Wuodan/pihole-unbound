@@ -96,11 +96,11 @@ After that, you can manage adlists in the Pi-hole admin UI at any time.
 
 The default lists are:
 
-| List | Description |
-| --- | --- |
-| [HaGeZi's Pro DNS Blocklist](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt) | Big broom - Cleans the Internet and protects your privacy! Blocks Ads, Affiliate, Tracking, Metrics, Telemetry, Phishing, Malware, Scam, Fake, Cryptojacking and other "Crap". |
-| [HaGeZi's Threat Intelligence Feeds DNS Blocklist - medium version](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.medium.txt) | Increases security! Blocks Malware, Spam, Scam and Phishing. |
-| [HaGeZi's Encrypted DNS Bypass DNS Blocklist](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/doh.txt) | Prevent methods to bypass your DNS, blocks encrypted DNS only. |
+| List                                                                                                                                                     | Description                                                                                                                                                                    |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [HaGeZi's Pro DNS Blocklist](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt)                                               | Big broom - Cleans the Internet and protects your privacy! Blocks Ads, Affiliate, Tracking, Metrics, Telemetry, Phishing, Malware, Scam, Fake, Cryptojacking and other "Crap". |
+| [HaGeZi's Threat Intelligence Feeds DNS Blocklist - medium version](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.medium.txt) | Increases security! Blocks Malware, Spam, Scam and Phishing.                                                                                                                   |
+| [HaGeZi's Encrypted DNS Bypass DNS Blocklist](https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/doh.txt)                              | Prevent methods to bypass your DNS, blocks encrypted DNS only.                                                                                                                 |
 
 ## Documentation
 
