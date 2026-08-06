@@ -11,7 +11,7 @@ services:
       start_period: 30s
     networks:
       dns:
-        ipv4_address: 172.31.0.2
+        ipv4_address: ${UNBOUND_IP:?Set UNBOUND_IP in .env}
 
   pihole:
     image: pihole/pihole:latest
@@ -36,16 +36,16 @@ services:
       - ./etc-pihole:/etc/pihole
       - ./adlists.list:/etc/pihole/adlists.list:ro
     dns:
-      - 172.31.0.2
+      - ${UNBOUND_IP:?Set UNBOUND_IP in .env}
     cap_add:
       - SYS_NICE
     networks:
       dns:
-        ipv4_address: 172.31.0.3
+        ipv4_address: ${PIHOLE_IP:?Set PIHOLE_IP in .env}
 
 networks:
   dns:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.31.0.0/24
+        - subnet: ${DNS_SUBNET:?Set DNS_SUBNET in .env}
