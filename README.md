@@ -87,9 +87,12 @@ health checks.
 
 ## Documentation
 
-- [Pi-hole Docker](https://docs.pi-hole.net/docker/)
+- [Pi-hole®](https://github.com/pi-hole/pi-hole): [DNS sinkhole](https://en.wikipedia.org/wiki/DNS_Sinkhole) for advertisement domain names
+- [Pi-hole Docker](https://github.com/pi-hole/docker-pi-hole/#docker-pi-hole): official Pi-hole Docker image
 - [Pi-hole with Unbound](https://docs.pi-hole.net/guides/dns/unbound/)
-- [`klutchell/unbound`](https://github.com/klutchell/unbound-docker)
+- [Unbound](https://github.com/NLnetLabs/unbound#unbound): validating, recursive, and caching DNS resolver.
+- [klutchell/unbound](https://github.com/klutchell/unbound-docker#unofficial-unbound-multiarch-docker-image): unofficial
+  unbound multiarch docker image
 
 ## License
 
